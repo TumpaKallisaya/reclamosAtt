@@ -7,6 +7,7 @@ class Principal extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->helper('url');
+		$this->load->model('dispositivo_movil_model');
 	}
 	public function index()
 	{
@@ -22,6 +23,10 @@ class Principal extends CI_Controller {
 	}
 	public function irFormulario3(){
 		$this->load->view('formulario3_view');
+	}
+
+	public function irFormularioImei(){
+		$this->load->view('formularioImei_view');
 	}
 
 	public function guardarFormulario1(){
@@ -49,5 +54,34 @@ class Principal extends CI_Controller {
 
 		$this->principal_model->guardarForm2($arrayFormulario2); // tiene que haber otro metodo en el modelo para guardar que se llame guardarForm2
 	}
+
+	public function guardarImei(){
+		$imeiCompleto = $this->input->post('txtImei');
+
+		$tac = substr($imeiCompleto, 0,5);
+		$fac = substr($imeiCompleto, 5,2);
+		$snr = substr($imeiCompleto, 7,6);
+		$spare = substr($imeiCompleto, 13,1);
+
+		//echo $imeiCompleto.'<br /> <br />';
+		//echo $tac.'<br />';
+		//echo $fac.'<br />';
+		//echo $snr.'<br />';
+		//echo $spare.'<br />';
+		$arrayDispositivoMovil = array(
+			'id_movil' => 1,
+			'id_fabricante' => 12,
+			'id_felcc' => 342,
+			'tac' => $tac,
+			'fac' => $fac,
+			'snr' => $snr,
+			'spare' => $spare
+		);
+		$this->dispositivo_movil_model->guardar_t_r_dispositivo_movil($arrayDispositivoMovil);
+
+		//$this->index();
+	}
+
+
 }
 
