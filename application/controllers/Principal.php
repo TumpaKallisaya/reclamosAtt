@@ -69,13 +69,14 @@ class Principal extends CI_Controller {
 		//echo $snr.'<br />';
 		//echo $spare.'<br />';
 		$arrayDispositivoMovil = array(
-			'id_movil' => 1,
-			'id_fabricante' => 12,
-			'id_felcc' => 342,
-			'tac' => $tac,
-			'fac' => $fac,
-			'snr' => $snr,
-			'spare' => $spare
+			'ID_MOVIL' => 1,
+			'ID_FABRICANTE' => 12,
+			'ID_FELCC' => 342,
+			'TAC' => $tac,
+			'FAC' => $fac,
+			'SNR' => $snr,
+			'SPARE' => $spare,
+			'FECHA_REGISTRO_IMEI' => date('d-m-Y')
 		);
 		$this->dispositivo_movil_model->guardar_t_r_dispositivo_movil($arrayDispositivoMovil);
 

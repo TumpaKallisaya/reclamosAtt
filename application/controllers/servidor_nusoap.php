@@ -49,11 +49,12 @@ class Servidor_nusoap extends CI_Controller{
 	}
 
 	function obtenerUsuario($id_usuario){
+		// aqui se debe hacer una consulta al modelo para recuperar datos de la base
 		$row = array(
          array(
 				'id' => $id_usuario,
-				'nombre' => 'Ultiminio',
-				'apellidos' => 'Ramos Galan'
+				'nombre' => 'Veronica',
+				'apellidos' => 'Gutierrez Sanga'
          )
 		);
 

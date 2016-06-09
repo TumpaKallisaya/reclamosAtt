@@ -8,12 +8,8 @@ class Dispositivo_movil_model extends CI_Model{
 	}
 
 	function guardar_t_r_dispositivo_movil($arrayDispositivoMovil){
-		$this->db->trans_begin();
-		echo 'llego hasta el modelo';
-		$this->db->insert('imei.imei_t_r_dispositivo_movil', $arrayDispositivoMovil);
-
-
-		    $this->db->trans_commit();
 		
+		echo 'llego hasta el modelo';
+		$this->db->insert('IMEI_T_R_DISPOSITIVO_MOVIL', $arrayDispositivoMovil);
 	}
 }
