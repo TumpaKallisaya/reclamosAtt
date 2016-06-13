@@ -17,7 +17,7 @@
           <h3>Operador Movil</h3>
 
           <!-- Text input-->
-          <form action="<?php echo site_url('principal/guardarImei'); ?>" method="post">
+          <form action="<?php echo site_url('principal/procesarImei'); ?>" method="post">
             <div class="form-group">
               <label class="col-md-4 control-label" for="txtImei">Ingrese el IMEI:</label>  
               <div class="col-md-4">

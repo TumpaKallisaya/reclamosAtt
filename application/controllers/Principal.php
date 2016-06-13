@@ -55,15 +55,25 @@ class Principal extends CI_Controller {
 		$this->principal_model->guardarForm2($arrayFormulario2); // tiene que haber otro metodo en el modelo para guardar que se llame guardarForm2
 	}
 
-	public function guardarImei(){
+	public function procesarImei(){
 		$imeiCompleto = $this->input->post('txtImei');
+
+		// se mandaran los datos al API de imei.info
+		$datosEnvio = array(
+			'login' => 'TumpaKallisaya',
+			'password' => 'revblade',
+			'imei' => $imeiCompleto
+		);
+		$urlImei = ' http://www.imei.info/api/checkimei/';
+		echo 'esto:  '.$this->postCURL($urlImei, $datosEnvio).'<br />';
+
 
 		$tac = substr($imeiCompleto, 0,5);
 		$fac = substr($imeiCompleto, 5,2);
 		$snr = substr($imeiCompleto, 7,6);
 		$spare = substr($imeiCompleto, 13,1);
 
-		//echo $imeiCompleto.'<br /> <br />';
+		echo $imeiCompleto.'<br /> <br />';
 		//echo $tac.'<br />';
 		//echo $fac.'<br />';
 		//echo $snr.'<br />';
@@ -78,10 +88,35 @@ class Principal extends CI_Controller {
 			'SPARE' => $spare,
 			'FECHA_REGISTRO_IMEI' => date('d-m-Y')
 		);
-		$this->dispositivo_movil_model->guardar_t_r_dispositivo_movil($arrayDispositivoMovil);
+		//$this->dispositivo_movil_model->guardar_t_r_dispositivo_movil($arrayDispositivoMovil);
 
 		//$this->index();
 	}
+
+	public function postCURL($_url, $_param){
+		echo 'Llega a curl';
+        $postData = '';
+        //create name value pairs seperated by &
+        foreach($_param as $k => $v) 
+        { 
+          $postData .= $k . '='.$v.'&'; 
+        }
+        rtrim($postData, '&');
+
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, false); 
+        curl_setopt($ch, CURLOPT_POST, count($postData));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);    
+
+        $output=curl_exec($ch);
+
+        curl_close($ch);
+
+        return $output;
+    }
 
 
 }
