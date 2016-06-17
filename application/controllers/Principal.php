@@ -57,23 +57,32 @@ class Principal extends CI_Controller {
 
 	public function procesarImei(){
 		$imeiCompleto = $this->input->post('txtImei');
-
+		
 		// se mandaran los datos al API de imei.info
-		$datosEnvio = array(
+		/*$data = array(
 			'login' => 'TumpaKallisaya',
 			'password' => 'revblade',
 			'imei' => $imeiCompleto
-		);
-		$urlImei = ' http://www.imei.info/api/checkimei/';
-		echo 'esto:  '.$this->postCURL($urlImei, $datosEnvio).'<br />';
+		);*/
+		//$urlImei = 'http://www.imei.info/api/checkimei/';
+		
+		//echo $this->post_to_url($urlImei, $data);
 
+		$this->load->library('simple_html_dom');
 
+		$html = file_get_html('http://www.imei.info/?imei=357376055242138');
+
+		foreach($html->find('p.dots') as $element){
+		  	echo $element->innertext . '<br>';
+		}
+
+/*
 		$tac = substr($imeiCompleto, 0,5);
 		$fac = substr($imeiCompleto, 5,2);
 		$snr = substr($imeiCompleto, 7,6);
 		$spare = substr($imeiCompleto, 13,1);
 
-		echo $imeiCompleto.'<br /> <br />';
+		//echo $imeiCompleto.'<br /> <br />';
 		//echo $tac.'<br />';
 		//echo $fac.'<br />';
 		//echo $snr.'<br />';
@@ -87,35 +96,41 @@ class Principal extends CI_Controller {
 			'SNR' => $snr,
 			'SPARE' => $spare,
 			'FECHA_REGISTRO_IMEI' => date('d-m-Y')
-		);
+		);-*/
 		//$this->dispositivo_movil_model->guardar_t_r_dispositivo_movil($arrayDispositivoMovil);
 
 		//$this->index();
 	}
 
-	public function postCURL($_url, $_param){
-		echo 'Llega a curl';
-        $postData = '';
-        //create name value pairs seperated by &
-        foreach($_param as $k => $v) 
-        { 
-          $postData .= $k . '='.$v.'&'; 
-        }
-        rtrim($postData, '&');
+	public function post_to_url($url, $data){
+		$fields = '';
+	   	foreach($data as $key => $value) { 
+	      	$fields .= $key . '=' . $value . '&'; 
+	   	}
+	   	rtrim($fields, '&');
 
+	   	$post = curl_init();
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$_url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, false); 
-        curl_setopt($ch, CURLOPT_POST, count($postData));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);    
+	   	curl_setopt($post, CURLOPT_URL, $url);
+	   	curl_setopt($post, CURLOPT_POST, count($data));
+	   	curl_setopt($post, CURLOPT_POSTFIELDS, $fields);
+	   	curl_setopt($post, CURLOPT_RETURNTRANSFER, true);
 
-        $output=curl_exec($ch);
+	   	$result = curl_exec($post);
 
-        curl_close($ch);
+	   	if (curl_errno($post)) {
+		    // this would be your first hint that something went wrong
+		    die('Couldn\'t send request: ' . curl_error($post));
+		} else {
+		    // check the HTTP status code of the request
+		    $resultStatus = curl_getinfo($post, CURLINFO_HTTP_CODE);
+		    if ($resultStatus != 200) {
+		        die('Request failed: HTTP status code: ' . $resultStatus);
+		    }
+		}
 
-        return $output;
+	   	curl_close($post);
+	   	return $result;
     }
 
 
