@@ -67,14 +67,14 @@ class Principal extends CI_Controller {
 		//$urlImei = 'http://www.imei.info/api/checkimei/';
 		
 		//echo $this->post_to_url($urlImei, $data);
-
+/*
 		$this->load->library('simple_html_dom');
 
 		$html = file_get_html('http://www.imei.info/?imei=357376055242138');
 
 		foreach($html->find('p.dots') as $element){
 		  	echo $element->innertext . '<br>';
-		}
+		}*/
 
 /*
 		$tac = substr($imeiCompleto, 0,5);
