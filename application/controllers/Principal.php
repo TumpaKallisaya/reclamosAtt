@@ -59,20 +59,33 @@ class Principal extends CI_Controller {
 		$imeiCompleto = $this->input->post('txtImei');
 		
 		// se mandaran los datos al API de imei.info
-		/*$data = array(
+		/*
+		$data = array(
 			'login' => 'TumpaKallisaya',
 			'password' => 'revblade',
 			'imei' => $imeiCompleto
-		);*/
-		//$urlImei = 'http://www.imei.info/api/checkimei/';
+		);
+		$urlImei = 'http://www.imei.info/api/checkimei/';*/
+
+		$response = Unirest\Request::post("https://ismaelc-imei-info.p.mashape.com/checkimei?login=TumpaKallisaya&password=revblade",
+		  array(
+		    "X-Mashape-Key" => "eIsRxs5Sx5mshzwF60OVJbiMuNGfp16Pzbejsn6ehk40CvXt7L",
+		    "Content-Type" => "application/x-www-form-urlencoded",
+		    "Accept" => "application/json"
+		  ),
+		  array(
+		    "imei" => "357376055242138"
+		  )
+		);
 		
+		echo $response;
 		//echo $this->post_to_url($urlImei, $data);
 /*
 		$this->load->library('simple_html_dom');
 
 		$html = file_get_html('http://www.imei.info/?imei=357376055242138');
 
-		foreach($html->find('p.dots') as $element){
+		foreach($html->find('p') as $element){
 		  	echo $element->innertext . '<br>';
 		}*/
 
