@@ -74,8 +74,15 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 //$tnsname = '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=172.17.0.45) (PORT=1521)) (CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=sadi))';
-$tnsname = '(DESCRIPTION =
+/*$tnsname = '(DESCRIPTION =
     (ADDRESS = (PROTOCOL = TCP)(HOST = UIF-0437)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = XE)
+    )
+  )';*/
+$tnsname = '(DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = TOSHIBA)(PORT = 1521))
     (CONNECT_DATA =
       (SERVER = DEDICATED)
       (SERVICE_NAME = XE)
@@ -88,7 +95,8 @@ $db['default'] = array(
 	'hostname' => $tnsname,
 	//'username' => 'userdba',
 	//'password' => 'userdba',
-	'username' => 'IMEI',
+	//'username' => 'IMEI',
+	'username' => 'TUMPA',
 	'password' => 'revblade',
 	'database' => '',
 	'dbdriver' => 'oci8',
