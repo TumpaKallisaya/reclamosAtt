@@ -1,0 +1,25 @@
+.oauth-button {
+    display: inline-block;
+    height: 21px;
+    border-radius: 3px;
+    color: white !important;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 21px;
+    padding: 0 8px 0 34px;
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.3) inset;
+    border: 1px solid gray;
+}
+.facebook .oauth-button {
+    background: url(fb-24.png) 0 50% no-repeat #3c5a99;
+    border-color: #3c5a99;
+}
+.google .oauth-button {
+    background: url(google-24.png) 2px 50% no-repeat #dc4a38;
+    border-color: #dc4a38;
+}
+.twitter .oauth-button {
+    background: url(twitter-24.png) 2px 50% no-repeat #2aa9e0;
+    border-color: #2aa9e0;
+}

@@ -1,0 +1,266 @@
+body {
+    margin: 0px; padding: 0px; background-color: white;
+}
+
+#content {
+    overflow: hidden;
+    background-color: white;
+}
+
+#border {
+    position: absolute; left: 0px; top: 0px;
+    border: 1px solid #cfcfcf;
+}
+
+.content_position {
+    position: absolute; left: 0px; top: 0px;
+}
+
+.transform_standart {
+    transform: translate3d(0px, 0px, 0px) scale(1) rotate(0.01deg);
+}
+
+.animation_duration {
+    animation-duration: 10s; animation-delay: 0s; animation-fill-mode: forwards;
+}
+
+
+
+
+
+/* ------------------------------ Whiteout - Start ----------------------------- */
+
+@keyframes whiteout_animation {
+    0%      {opacity: 1; animation-timing-function: linear;}
+    5%      {opacity: 0; animation-timing-function: linear;}
+    95%     {opacity: 0; animation-timing-function: linear;}
+    100%    {opacity: 1}
+}
+
+@keyframes whiteout_animation_end {
+    0%      {opacity: 1; animation-timing-function: linear;}
+    5%      {opacity: 0; animation-timing-function: linear;}
+    100%    {opacity: 0}
+}
+
+#whiteout {
+    background-color: white; opacity: 1;
+    animation-name: whiteout_animation;
+}
+
+/* ------------------------------ Whiteout - End ----------------------------- */
+
+
+
+
+
+/* ------------------------------ White Borders - Start ----------------------------- */
+
+#white_border_top {
+    position: absolute; top: 0px; left: 0px;
+    width: 468px; height: 7px;
+    background-color: white;
+}
+
+#white_border_bottom {
+    position: absolute; bottom: 0px; left: 0px;
+    width: 468px; height: 7px;
+    background-color: white;
+}
+
+#white_border_left {
+    position: absolute; top: 0px; left: 0px;
+    width: 7px; height: 60px;
+    background-color: white;
+}
+
+#white_border_right {
+    position: absolute; top: 0px; right: 0px;
+    width: 7px; height: 60px;
+    background-color: white;
+}
+
+/* ------------------------------ White Borders - End ----------------------------- */
+
+
+
+
+
+/* ------------------------------ Frame 1 - Start ----------------------------- */
+
+
+@keyframes copy_1_animation {
+    0%      {transform: translate3d(2px, 0px, 0px) scaleX(0.9) rotate(0.01deg); opacity: 1; animation-timing-function: linear;}
+    19%     {opacity: 1;}
+    24%     {transform: translate3d(2px, 0px, 0px) scaleX(1) rotate(0.01deg); opacity: 0; animation-timing-function: linear;}
+    100%    {transform: translate3d(2px, 0px, 0px) scaleX(1) rotate(0.01deg); opacity: 0;}
+}
+
+#copy_1 {
+    transform-origin: left; opacity: 1;
+    transform: translate3d(2px, 0px, 0px) scaleX(0.9) rotate(0.01deg);    
+    background-image: url(copy_1.png);
+    animation-name: copy_1_animation;
+}
+
+@keyframes bg_img_1_animation {
+    0%      {opacity: 1; animation-timing-function: linear;}
+    19%     {opacity: 1; animation-timing-function: linear;}
+    24%     {opacity: 0; animation-timing-function: linear;}
+    100%    {opacity: 0}
+}
+
+#bg_img_1 {
+    background-image: url(bg_img_1.jpg); opacity: 1;
+    animation-name: bg_img_1_animation;
+}
+
+@keyframes bg_img_2_animation {
+    0%      {opacity: 0; animation-timing-function: linear;}
+    24%     {opacity: 0; animation-timing-function: linear;}
+    26%     {opacity: 1; animation-timing-function: linear;}
+    100%    {opacity: 1}
+}
+
+#bg_img_2 {
+    background-image: url(bg_img_2.jpg); opacity: 0;
+    animation-name: bg_img_2_animation;
+}
+
+@keyframes bg_mask_animation {
+    0%      {transform: translate3d(0px, 0px, 0px) scale(1) rotate(0.01deg); opacity: 1; animation-timing-function: linear;}
+    24%     {transform: translate3d(-11px, -7px, 0px) scale(1) rotate(0.01deg); opacity: 1; animation-timing-function: linear;}
+    25%     {transform: translate3d(-11px, -7px, 0px) scale(1) rotate(0.01deg); opacity: 0; animation-timing-function: linear;}
+    100%    {transform: translate3d(-11px, -7px, 0px) scale(1) rotate(0.01deg); opacity: 0;}
+}
+
+#bg_mask {
+    transform: translate3d(0px, 0px, 0px) scale(1) rotate(0.01deg);
+    position: absolute; top: -26px; left: 257px;
+    width: 200px; height: 200px;
+    background-image: url(bg_mask.png);
+    animation-name: bg_mask_animation;
+}
+
+@keyframes bg_mask_2_animation {
+    0%      {transform: translate3d(0px, 0px, 0px) scale(1) rotate(0.01deg); opacity: 0; animation-timing-function: linear;}
+    23.9%   {transform: translate3d(0px, 0px, 0px) scale(1) rotate(0.01deg); opacity: 0; animation-timing-function: linear;}
+    24%     {transform: translate3d(0px, 0px, 0px) scale(1) rotate(0.01deg); opacity: 1; animation-timing-function: linear;}
+    50%     {transform: translate3d(0px, -20px, 0px) scale(1) rotate(0.01deg); opacity: 1; animation-timing-function: linear;}
+    100%    {transform: translate3d(0px, -20px, 0px) scale(1) rotate(0.01deg); opacity: 1;}
+}
+
+#bg_mask_2 {
+    transform: translate3d(0px, 0px, 0px) scale(1) rotate(0.01deg); opacity: 0;
+    position: absolute; top: -26px; left: 178px;
+    width: 200px; height: 200px;
+    background-image: url(bg_mask.png);
+    animation-name: bg_mask_2_animation;
+}
+
+/* ------------------------------ Frame 1 - End ----------------------------- */
+
+
+
+
+
+/* ------------------------------ Frame 2 - Start ----------------------------- */
+
+@keyframes copy_2_animation {
+    0%      {transform: translate3d(2px, 0px, 0px) scaleX(0.9) rotate(0.01deg); opacity: 0; animation-timing-function: linear;}
+    24%     {transform: translate3d(2px, 0px, 0px) scaleX(0.9) rotate(0.01deg); opacity: 0; animation-timing-function: linear;}
+    29%     {opacity: 1;}
+    49%     {opacity: 1;}
+    51%     {transform: translate3d(2px, 0px, 0px) scaleX(1) rotate(0.01deg); opacity: 0; animation-timing-function: linear;}
+    100%    {transform: translate3d(2px, 0px, 0px) scaleX(1) rotate(0.01deg); opacity: 0;}
+}
+
+#copy_2 {
+    transform-origin: left; opacity: 1;
+    transform: translate3d(2px, 0px, 0px) scaleX(0.9) rotate(0.01deg);    
+    background-image: url(copy_2.png);
+    animation-name: copy_2_animation;
+}
+
+@keyframes whiteout_frame2_animation {
+    0%      {opacity: 0; animation-timing-function: linear;}
+    48%     {opacity: 0; animation-timing-function: linear;}
+    51%     {opacity: 1; animation-timing-function: linear;}
+    100%    {opacity: 1}
+}
+
+#whiteout_frame2 {
+    background-color: white; opacity: 0;
+    animation-name: whiteout_frame2_animation;
+}
+
+/* ------------------------------ Frame 2 - End ----------------------------- */
+
+
+
+
+
+/* ------------------------------ Frame 3 - Start ----------------------------- */
+
+@keyframes phone_2_animation {
+    0%      {transform: translate3d(0px, 0px, 0px) scale(0.9) rotate(0.01deg); opacity: 0; animation-timing-function: linear;}
+    52%     {transform: translate3d(0px, 0px, 0px) scale(0.9) rotate(0.01deg); opacity: 0; animation-timing-function: linear;}
+    54%     {opacity: 1;}
+    71%     {opacity: 1;}
+    76%     {transform: translate3d(0px, 0px, 0px) scale(1) rotate(0.01deg); opacity: 0; animation-timing-function: linear;}
+    100%    {transform: translate3d(0px, 0px, 0px) scale(1) rotate(0.01deg); opacity: 0;}
+}
+
+#phone_2 {
+    transform: translate3d(0px, 0px, 0px) scale(0.9) rotate(0.01deg);
+    position: absolute; top: 0px; left: 0px; opacity: 0;
+    width: 468px; height: 60px;
+    background-image: url(phone_2.jpg);
+    animation-name: phone_2_animation;
+}
+
+/* ------------------------------ Frame 3 - End ----------------------------- */
+
+
+
+
+
+/* ------------------------------ Frame 4 - Start ----------------------------- */
+
+@keyframes huawei_animation {
+    0%      {opacity: 0; animation-timing-function: linear;}
+    52%     {opacity: 0; animation-timing-function: linear;}
+    54%     {opacity: 1; animation-timing-function: linear;}
+    100%    {opacity: 1}
+}
+
+#huawei {
+    background-image: url(huawei.png); opacity: 0;
+    animation-name: huawei_animation;
+}
+
+@keyframes logo_animation {
+    0%      {opacity: 0; animation-timing-function: linear;}
+    75%     {opacity: 0; animation-timing-function: linear;}
+    80%     {opacity: 1; animation-timing-function: linear;}
+    100%    {opacity: 1}
+}
+
+#logo {
+    background-image: url(logo.png); opacity: 0;
+    animation-name: logo_animation;
+}
+
+@keyframes cta_animation {
+    0%      {opacity: 0; animation-timing-function: linear;}
+    80%     {opacity: 0; animation-timing-function: linear;}
+    85%     {opacity: 1; animation-timing-function: linear;}
+    100%    {opacity: 1}
+}
+
+#cta {
+    background-image: url(cta.png); opacity: 0;
+    animation-name: cta_animation;
+}
+
+/* ------------------------------ Frame 4 - End ----------------------------- */
