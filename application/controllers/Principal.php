@@ -26,7 +26,11 @@ class Principal extends CI_Controller {
 	}
 
 	public function irFormularioImei(){
+		$this->load->view('templates/cabecera_view');
 		$this->load->view('formularioImei_view');
+		$this->load->view('nosotros_view');
+		$this->load->view('contactanos_view');
+		$this->load->view('templates/pie_view');
 	}
 
 	public function guardarFormulario1(){
@@ -61,13 +65,13 @@ class Principal extends CI_Controller {
 		// se mandaran los datos al API de imei.info
 		/*
 		$data = array(
-			'login' => 'TumpaKallisaya',
-			'password' => 'revblade',
+			'login' => 'VeritoGs',
+			'password' => 'verito12345',
 			'imei' => $imeiCompleto
 		);
 		$urlImei = 'http://www.imei.info/api/checkimei/';*/
 
-		$response = Unirest\Request::post("https://ismaelc-imei-info.p.mashape.com/checkimei?login=TumpaKallisaya&password=revblade",
+		/*$response = Unirest\Request::post("https://ismaelc-imei-info.p.mashape.com/checkimei?login=TumpaKallisaya&password=revblade",
 		  array(
 		    "X-Mashape-Key" => "eIsRxs5Sx5mshzwF60OVJbiMuNGfp16Pzbejsn6ehk40CvXt7L",
 		    "Content-Type" => "application/x-www-form-urlencoded",
@@ -78,16 +82,36 @@ class Principal extends CI_Controller {
 		  )
 		);
 		
-		echo $response;
+		echo $response;*/
 		//echo $this->post_to_url($urlImei, $data);
-/*
+
 		$this->load->library('simple_html_dom');
 
-		$html = file_get_html('http://www.imei.info/?imei=357376055242138');
+		//$html = file_get_html('http://www.imei.info/?imei='.$imeiCompleto); // para cuando funcione
 
+		$html = file_get_html(base_url().'resources/page/IMEI.info.html'); // comentar este
+
+		//para jalar los dos primeros datos
+		$varA = 0;
+		//$arrayDatos1[] = '';
 		foreach($html->find('p') as $element){
-		  	echo $element->innertext . '<br>';
-		}*/
+			if ($varA == 0 || $varA == 1){
+				$arrayDatos1[] = $element->innertext;
+			}
+		  	//echo $element->innertext . '<br>';
+		}
+		//echo $arrayDatos1[0].' <br /> '.$arrayDatos1[1];
+		$modelo = substr($arrayDatos1[0], 34);
+		$marca = substr($arrayDatos1[1], 34);
+
+		$dataImeiInfo['imei'] = $imeiCompleto;
+		$dataImeiInfo['modelo'] = $modelo;
+		$dataImeiInfo['marca'] = $marca;
+
+		//$modelo = $arrayDatos1[0];
+		//$marca = $arrayDatos1[1];
+
+		//echo $modelo.' - '.$marca;
 
 /*
 		$tac = substr($imeiCompleto, 0,5);
@@ -113,6 +137,12 @@ class Principal extends CI_Controller {
 		//$this->dispositivo_movil_model->guardar_t_r_dispositivo_movil($arrayDispositivoMovil);
 
 		//$this->index();
+
+		$this->load->view('templates/cabecera_view');
+		$this->load->view('formularioRespuestaImei_view', $dataImeiInfo);
+		$this->load->view('nosotros_view');
+		$this->load->view('contactanos_view');
+		$this->load->view('templates/pie_view');
 	}
 
 	public function post_to_url($url, $data){
